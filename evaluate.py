@@ -6,6 +6,7 @@ import time
 start_time = time.time() 
 
 from handle_data import X_train, y_train, X_test, y_test
+from hyperparameters import hyperparameters
 
 # Import keras
 import keras
@@ -16,13 +17,12 @@ from keras.layers import Dropout
 from keras.wrappers.scikit_learn import KerasClassifier 
 from sklearn.model_selection import cross_val_score
 
-# Set hyperparameters
-dropout_rate = 0.452
-batch_size = 19
-layers = 4
-epochs = 126
-number_of_neurons = 51
-optimizer = 'adam'
+dropout_rate = hyperparameters['dropout_rate']
+batch_size = hyperparameters['batch_size']
+layers = hyperparameters['layers']
+epochs = hyperparameters['epochs']
+number_of_neurons = hyperparameters['number_of_neurons']
+optimizer = hyperparameters['optimizer']
 
 # Wrap Keras functionality to use sklearn's K-Fold CV capabilities. 
 def build_classifier(): # Needed for KerasClassifier
